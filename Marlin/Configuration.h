@@ -380,9 +380,9 @@
   // If you are using a pre-configured hotend then you can use one of the value sets by uncommenting it
 
   // Wanhao Duplicator i3
-  #define DEFAULT_Kp 29.60
-  #define DEFAULT_Ki 2.54
-  #define DEFAULT_Kd 86.09
+  #define DEFAULT_Kp 15.02
+  #define DEFAULT_Ki 0.69
+  #define DEFAULT_Kd 81.19
 
   // Ultimaker
   //#define DEFAULT_Kp 22.2
@@ -435,9 +435,9 @@
   //#define PID_BED_DEBUG // Sends debug data to the serial port.
 
   // Wanhao Duplicator i3
-  #define DEFAULT_bedKp 574.90
-  #define DEFAULT_bedKi 78.86
-  #define DEFAULT_bedKd 1047.83
+  #define DEFAULT_bedKp 484.48
+  #define DEFAULT_bedKi 92.40
+  #define DEFAULT_bedKd 635.03
 
   //120V 250W silicone heater into 4mm borosilicate (MendelMax 1.5+)
   //from FOPDT model - kp=.39 Tp=405 Tdead=66, Tc set to 79.2, aggressive factor of .15 (vs .1, 1, 10)
