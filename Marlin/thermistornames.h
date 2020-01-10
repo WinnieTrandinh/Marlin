@@ -89,7 +89,8 @@
 // High Temperature thermistors
 #elif THERMISTOR_ID == 66
   #define THERMISTOR_NAME "Dyze 4.7M"
-
+#elif THERMRISTER_ID == 99
+  #define THERMISTOR_NAME "Wanhao i3 100k + 10k pullup"
 // Dummies for dev testing
 #elif THERMISTOR_ID == 998
   #define THERMISTOR_NAME "Dummy 1"
