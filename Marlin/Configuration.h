@@ -380,9 +380,9 @@
   // If you are using a pre-configured hotend then you can use one of the value sets by uncommenting it
 
   // Wanhao Duplicator i3
-  #define DEFAULT_Kp 15.32
-  #define DEFAULT_Ki 0.60
-  #define DEFAULT_Kd 97.90
+  #define DEFAULT_Kp 17.06
+  #define DEFAULT_Ki 0.75
+  #define DEFAULT_Kd 100.25
 
   // Ultimaker
   //#define DEFAULT_Kp 22.2
