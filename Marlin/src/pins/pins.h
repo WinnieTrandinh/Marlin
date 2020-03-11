@@ -256,6 +256,8 @@
   #include "mega/pins_PICA.h"                   // ATmega2560                             env:mega2560
 #elif MB(PICA_REVB)
   #include "mega/pins_PICAOLD.h"                // ATmega2560                             env:mega2560
+#elif MB(WANHAO_D9)
+  #include "mega/pins_WANHAO_D9.h"              // ATmega2560                             env:mega2560
 
 //
 // ATmega1281, ATmega2561
