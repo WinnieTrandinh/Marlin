@@ -1181,7 +1181,6 @@ SERIAL_ECHOLN(PSTR("BeginSwitch"));
           injectCommands_P(PSTR(USER_GCODE_1));
           break;
         }
-
         case centerData: // Assitant Level ,  Centre 1
         {
           setAxisPosition_mm(LEVEL_CORNERS_Z_HOP, (axis_t)Z);
@@ -1193,32 +1192,32 @@ SERIAL_ECHOLN(PSTR("BeginSwitch"));
         case topLeftData: // Assitant Level , Front Left 2
         {
           setAxisPosition_mm(LEVEL_CORNERS_Z_HOP, (axis_t)Z);
-          setAxisPosition_mm((X_MIN_BED + LEVEL_CORNERS_INSET), (axis_t)X);
-          setAxisPosition_mm((Y_MIN_BED + LEVEL_CORNERS_INSET), (axis_t)Y);
+          setAxisPosition_mm((X_MIN_BED + LEVEL_CORNERS_INSET_LFRB), (axis_t)X);
+          setAxisPosition_mm((Y_MIN_BED + LEVEL_CORNERS_INSET_LFRB), (axis_t)Y);
           waitway = 6;
           break;
         }
         case topRightData: // Assitant Level , Front Right 3
         {
           setAxisPosition_mm(LEVEL_CORNERS_Z_HOP, (axis_t)Z);
-          setAxisPosition_mm((X_MAX_BED - LEVEL_CORNERS_INSET), (axis_t)X);
-          setAxisPosition_mm((Y_MIN_BED + LEVEL_CORNERS_INSET), (axis_t)Y);
+          setAxisPosition_mm((X_MAX_BED - LEVEL_CORNERS_INSET_LFRB), (axis_t)X);
+          setAxisPosition_mm((Y_MIN_BED + LEVEL_CORNERS_INSET_LFRB), (axis_t)Y);
           waitway = 6;
           break;
         }
         case lowRightData: // Assitant Level , Back Right 4
         {
           setAxisPosition_mm(LEVEL_CORNERS_Z_HOP, (axis_t)Z);
-          setAxisPosition_mm((X_MAX_BED - LEVEL_CORNERS_INSET), (axis_t)X);
-          setAxisPosition_mm((Y_MAX_BED - LEVEL_CORNERS_INSET), (axis_t)Y);
+          setAxisPosition_mm((X_MAX_BED - LEVEL_CORNERS_INSET_LFRB), (axis_t)X);
+          setAxisPosition_mm((Y_MAX_BED - LEVEL_CORNERS_INSET_LFRB), (axis_t)Y);
           waitway = 6;
           break;
         }
         case lowLeftData: // Assitant Level , Back Left 5
         {
           setAxisPosition_mm(LEVEL_CORNERS_Z_HOP, (axis_t)Z);
-          setAxisPosition_mm((X_MIN_BED + LEVEL_CORNERS_INSET), (axis_t)X);
-          setAxisPosition_mm((Y_MAX_BED - LEVEL_CORNERS_INSET), (axis_t)Y);
+          setAxisPosition_mm((X_MIN_BED + LEVEL_CORNERS_INSET_LFRB), (axis_t)X);
+          setAxisPosition_mm((Y_MAX_BED - LEVEL_CORNERS_INSET_LFRB), (axis_t)Y);
           waitway = 6;
           break;
         }
