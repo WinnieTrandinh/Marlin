@@ -1905,6 +1905,31 @@ void onConfigurationStoreRead(bool success)
 	rtscheck.RTS_SndData(getZOffset_mm() * 100, 0x1026);
 }
 
-} // namespace ExtUI
 
+#if HAS_PID_TUNING
+void OnPidTuning(const result_t rst)
+{
+  // Called for temperature PID tuning result
+  SERIAL_ECHOLNPAIR("OnPidTuning:",rst);
+  switch(rst) {
+    case PID_BAD_EXTRUDER_NUM:
+      ScreenHandler.setstatusmessagePGM(PSTR(STR_PID_BAD_EXTRUDER_NUM));
+      break;
+    case PID_TEMP_TOO_HIGH:
+      ScreenHandler.setstatusmessagePGM(PSTR(STR_PID_TEMP_TOO_HIGH));
+      break;
+    case PID_TUNING_TIMEOUT:
+      ScreenHandler.setstatusmessagePGM(PSTR(STR_PID_TIMEOUT));
+      break;
+    case PID_DONE:
+      ScreenHandler.setstatusmessagePGM(PSTR(STR_PID_AUTOTUNE_FINISHED));
+      break;
+  }
+  ScreenHandler.GotoScreen(DGUSLCD_SCREEN_MAIN);
+ // called on PidTuningResult
+}
+#endif
+
+
+} // namespace ExtUI
 #endif
