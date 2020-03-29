@@ -1,9 +1,9 @@
 /**
  * Marlin 3D Printer Firmware
- * Copyright (C) 2016 MarlinFirmware [https://github.com/MarlinFirmware/Marlin]
+ * Copyright (c) 2020 MarlinFirmware [https://github.com/MarlinFirmware/Marlin]
  *
  * Based on Sprinter and grbl.
- * Copyright (C) 2011 Camiel Gubbels / Erik van der Zalm
+ * Copyright (c) 2011 Camiel Gubbels / Erik van der Zalm
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -20,125 +20,45 @@
  *
  */
 
-// 100k bed thermistor
+#pragma once
 
-// Converted to use a 10kOhm pullup resistor, which is present in the oldest wanhao duplicator i3
-// printers.
+// 100k bed thermistor with a 10K pull-up resistor - made by $ buildroot/share/scripts/createTemperatureLookupMarlin.py --rp=10000
 
-// Created using the reprap tool. Many of the data points were remove to make it smaller.
-//
-// Thermistor lookup table for RepRap Temperature Sensor Boards (http://make.rrrf.org/ts)
-// Made with createTemperatureLookup.py (http://svn.reprap.org/trunk/reprap/firmware/Arduino/utilities/createTemperatureLookup.py)
-// ./createTemperatureLookup.py --r0=100000 --t0=25 --r1=0 --r2=10000 --beta=3950 --max-adc=1023
-// r0: 100000
-// t0: 25
-// r1: 0
-// r2: 10000
-// beta: 3950
-// max adc: 1023
 const short temptable_99[][2] PROGMEM = {
-   {    1 * OVERSAMPLENR, 710},
-   // {   11 * OVERSAMPLENR, 341},
-   // {   21 * OVERSAMPLENR, 284},
-   {   31 * OVERSAMPLENR, 254},
-   {   41 * OVERSAMPLENR, 235},
-   {   51 * OVERSAMPLENR, 220},
-   {   61 * OVERSAMPLENR, 209},
-   {   71 * OVERSAMPLENR, 199},
-   {   81 * OVERSAMPLENR, 192},
-   {   91 * OVERSAMPLENR, 185},
-   {  101 * OVERSAMPLENR, 179},
-   {  111 * OVERSAMPLENR, 173},
-   {  121 * OVERSAMPLENR, 168},
-   {  131 * OVERSAMPLENR, 164},
-   {  141 * OVERSAMPLENR, 160},
-   {  151 * OVERSAMPLENR, 156},
-   {  161 * OVERSAMPLENR, 153},
-   {  171 * OVERSAMPLENR, 149},
-   {  181 * OVERSAMPLENR, 146},
-   {  191 * OVERSAMPLENR, 143},
-   {  201 * OVERSAMPLENR, 141},
-   // {  211 * OVERSAMPLENR, 138},
-   {  221 * OVERSAMPLENR, 135},
-   // {  231 * OVERSAMPLENR, 133},
-   {  241 * OVERSAMPLENR, 131},
-   // {  251 * OVERSAMPLENR, 129},
-   {  261 * OVERSAMPLENR, 126},
-   // {  271 * OVERSAMPLENR, 124},
-   {  281 * OVERSAMPLENR, 122},
-   // {  291 * OVERSAMPLENR, 120},
-   {  301 * OVERSAMPLENR, 119},
-   // {  311 * OVERSAMPLENR, 117},
-   // {  321 * OVERSAMPLENR, 115},
-   {  331 * OVERSAMPLENR, 113},
-   // {  341 * OVERSAMPLENR, 112},
-   // {  351 * OVERSAMPLENR, 110},
-   {  361 * OVERSAMPLENR, 108},
-   // {  371 * OVERSAMPLENR, 107},
-   // {  381 * OVERSAMPLENR, 105},
-   {  391 * OVERSAMPLENR, 104},
-   // {  401 * OVERSAMPLENR, 102},
-   // {  411 * OVERSAMPLENR, 101},
-   {  421 * OVERSAMPLENR, 99},
-   // {  431 * OVERSAMPLENR, 98},
-   // {  441 * OVERSAMPLENR, 97},
-   {  451 * OVERSAMPLENR, 95},
-   // {  461 * OVERSAMPLENR, 94},
-   // {  471 * OVERSAMPLENR, 93},
-   // {  481 * OVERSAMPLENR, 91},
-   {  491 * OVERSAMPLENR, 90},
-   // {  501 * OVERSAMPLENR, 89},
-   // {  511 * OVERSAMPLENR, 87},
-   // {  521 * OVERSAMPLENR, 86},
-   {  531 * OVERSAMPLENR, 85},
-   // {  541 * OVERSAMPLENR, 84},
-   // {  551 * OVERSAMPLENR, 82},
-   // {  561 * OVERSAMPLENR, 81},
-   {  571 * OVERSAMPLENR, 80},
-   // {  581 * OVERSAMPLENR, 78},
-   // {  591 * OVERSAMPLENR, 77},
-   // {  601 * OVERSAMPLENR, 76},
-   {  611 * OVERSAMPLENR, 75},
-   // {  621 * OVERSAMPLENR, 74},
-   // {  631 * OVERSAMPLENR, 72},
-   {  641 * OVERSAMPLENR, 71},
-   // {  651 * OVERSAMPLENR, 70},
-   // {  661 * OVERSAMPLENR, 68},
-   // {  671 * OVERSAMPLENR, 67},
-   {  681 * OVERSAMPLENR, 66},
-   // {  691 * OVERSAMPLENR, 65},
-   // {  701 * OVERSAMPLENR, 63},
-   {  711 * OVERSAMPLENR, 62},
-   // {  721 * OVERSAMPLENR, 61},
-   // {  731 * OVERSAMPLENR, 59},
-   // {  741 * OVERSAMPLENR, 58},
-   {  751 * OVERSAMPLENR, 57},
-   // {  761 * OVERSAMPLENR, 55},
-   // {  771 * OVERSAMPLENR, 54},
-   // {  781 * OVERSAMPLENR, 52},
-   {  791 * OVERSAMPLENR, 51},
-   // {  801 * OVERSAMPLENR, 49},
-   {  811 * OVERSAMPLENR, 48},
-   // {  821 * OVERSAMPLENR, 46},
-   {  831 * OVERSAMPLENR, 45},
-   // {  841 * OVERSAMPLENR, 43},
-   // {  851 * OVERSAMPLENR, 41},
-   // {  861 * OVERSAMPLENR, 40},
-   {  871 * OVERSAMPLENR, 38},
-   {  881 * OVERSAMPLENR, 36},
-   // {  891 * OVERSAMPLENR, 34},
-   {  901 * OVERSAMPLENR, 32},
-   // {  911 * OVERSAMPLENR, 29},
-   {  921 * OVERSAMPLENR, 27},
-   // {  931 * OVERSAMPLENR, 24},
-   {  941 * OVERSAMPLENR, 22},
-   // {  951 * OVERSAMPLENR, 19},
-   // {  961 * OVERSAMPLENR, 15},
-   {  971 * OVERSAMPLENR, 11},
-   {  981 * OVERSAMPLENR, 7},
-   {  991 * OVERSAMPLENR, 2},
-   { 1001 * OVERSAMPLENR, -4},
-   // { 1011 * OVERSAMPLENR, -14},
-   { 1021 * OVERSAMPLENR, -37}
+  { OV(  5.81), 350 }, // v=0.028   r=    57.081  res=13.433 degC/count
+  { OV(  6.54), 340 }, // v=0.032   r=    64.248  res=11.711 degC/count
+  { OV(  7.38), 330 }, // v=0.036   r=    72.588  res=10.161 degC/count
+  { OV(  8.36), 320 }, // v=0.041   r=    82.336  res= 8.772 degC/count
+  { OV(  9.51), 310 }, // v=0.046   r=    93.780  res= 7.535 degC/count
+  { OV( 10.87), 300 }, // v=0.053   r=   107.281  res= 6.439 degC/count
+  { OV( 12.47), 290 }, // v=0.061   r=   123.286  res= 5.473 degC/count
+  { OV( 14.37), 280 }, // v=0.070   r=   142.360  res= 4.627 degC/count
+  { OV( 16.64), 270 }, // v=0.081   r=   165.215  res= 3.891 degC/count
+  { OV( 19.37), 260 }, // v=0.095   r=   192.758  res= 3.253 degC/count
+  { OV( 22.65), 250 }, // v=0.111   r=   226.150  res= 2.705 degC/count
+  { OV( 26.62), 240 }, // v=0.130   r=   266.891  res= 2.236 degC/count
+  { OV( 31.46), 230 }, // v=0.154   r=   316.931  res= 1.839 degC/count
+  { OV( 37.38), 220 }, // v=0.182   r=   378.822  res= 1.504 degC/count
+  { OV( 44.65), 210 }, // v=0.218   r=   455.939  res= 1.224 degC/count
+  { OV( 53.64), 200 }, // v=0.262   r=   552.778  res= 0.991 degC/count
+  { OV( 64.78), 190 }, // v=0.316   r=   675.386  res= 0.799 degC/count
+  { OV( 78.65), 180 }, // v=0.384   r=   831.973  res= 0.643 degC/count
+  { OV( 95.94), 170 }, // v=0.468   r=  1033.801  res= 0.516 degC/count
+  { OV(117.52), 160 }, // v=0.574   r=  1296.481  res= 0.414 degC/count
+  { OV(144.42), 150 }, // v=0.705   r=  1641.900  res= 0.333 degC/count
+  { OV(177.80), 140 }, // v=0.868   r=  2101.110  res= 0.269 degC/count
+  { OV(218.89), 130 }, // v=1.069   r=  2718.725  res= 0.220 degC/count
+  { OV(268.82), 120 }, // v=1.313   r=  3559.702  res= 0.183 degC/count
+  { OV(328.35), 110 }, // v=1.603   r=  4719.968  res= 0.155 degC/count
+  { OV(397.44), 100 }, // v=1.941   r=  6343.323  res= 0.136 degC/count
+  { OV(474.90),  90 }, // v=2.319   r=  8648.807  res= 0.124 degC/count
+  { OV(558.03),  80 }, // v=2.725   r= 11975.779  res= 0.118 degC/count
+  { OV(642.76),  70 }, // v=3.138   r= 16859.622  res= 0.119 degC/count
+  { OV(724.25),  60 }, // v=3.536   r= 24161.472  res= 0.128 degC/count
+  { OV(797.93),  50 }, // v=3.896   r= 35295.361  res= 0.146 degC/count
+  { OV(860.51),  40 }, // v=4.202   r= 52635.209  res= 0.178 degC/count
+  { OV(910.55),  30 }, // v=4.446   r= 80262.251  res= 0.229 degC/count
+  { OV(948.36),  20 }, // v=4.631   r=125374.433  res= 0.313 degC/count
+  { OV(975.47),  10 }, // v=4.763   r=201020.458  res= 0.449 degC/count
+  { OV(994.02),   0 }  // v=4.854   r=331567.870  res= 0.676 degC/count
 };
-
