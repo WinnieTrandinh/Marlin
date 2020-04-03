@@ -1,4 +1,4 @@
-/**
+/*
  * Marlin 3D Printer Firmware
  * Copyright (C) 2016 MarlinFirmware [https://github.com/MarlinFirmware/Marlin]
  *
@@ -380,9 +380,9 @@
   // If you are using a pre-configured hotend then you can use one of the value sets by uncommenting it
 
   // Wanhao Duplicator i3
-  #define DEFAULT_Kp 17.33
-  #define DEFAULT_Ki 0.95
-  #define DEFAULT_Kd 79.14
+  #define DEFAULT_Kp 21.67
+  #define DEFAULT_Ki 1.14
+  #define DEFAULT_Kd 103.38
 
   // Ultimaker
   //#define DEFAULT_Kp 22.2
