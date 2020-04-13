@@ -2083,6 +2083,8 @@
 // Touch-screen LCD for Malyan M200 printers
 //
 #define MALYAN_LCD
+//Use this to turn on debug for the MALYAN_LCD if you're having issues with it to show debug messaging. Turned on by default to save on code size. Adds 272 Bytes to the build
+//#define DEBUG_MALYAN_LCD
 
 //
 // Touch UI for FTDI EVE (FT800/FT810) displays

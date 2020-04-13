@@ -45,7 +45,11 @@
 
 #if ENABLED(MALYAN_LCD)
 
-#define DEBUG_MALYAN_LCD
+#if defined(DEBUG_MALYAN_LCD)
+    #define MALYAN_DEBUG 1
+#else
+    #define MALYAN_DEBUG 0
+#endif
 
 #include "extui/ui_api.h"
 
@@ -58,8 +62,10 @@
 #include "../module/printcounter.h"
 #include "../gcode/queue.h"
 
+#if MALYAN_DEBUG
 #define DEBUG_OUT ENABLED(DEBUG_MALYAN_LCD)
 #include "../core/debug_out.h"
+#endif
 
 // On the Malyan M200, this will be Serial1. On a RAMPS board,
 // it might not be.
@@ -113,7 +119,9 @@ void write_to_lcd(const char * const message) {
 void process_lcd_c_command(const char* command) {
   const int target_val = command[1] ? atoi(command + 1) : -1;
   if (target_val < 0) {
+#if MALYAN_DEBUG
     DEBUG_ECHOLNPAIR("UNKNOWN C COMMAND ", command);
+#endif
     return;
   }
   switch (command[0]) {
@@ -134,7 +142,11 @@ void process_lcd_c_command(const char* command) {
       case 'P': ExtUI::setTargetTemp_celsius(target_val, ExtUI::heater_t::BED); break;
     #endif
 
-    default: DEBUG_ECHOLNPAIR("UNKNOWN C COMMAND ", command);
+    default:
+#if MALYAN_DEBUG
+        DEBUG_ECHOLNPAIR("UNKNOWN C COMMAND ", command);
+#endif
+        break;
   }
 }
 
@@ -180,7 +192,11 @@ void process_lcd_eb_command(const char* command) {
       write_to_lcd(message_buffer);
     } break;
 
-    default: DEBUG_ECHOLNPAIR("UNKNOWN E/B COMMAND ", command);
+    default:
+#if MALYAN_DEBUG
+         DEBUG_ECHOLNPAIR("UNKNOWN E/B COMMAND ", command);
+#endif
+        break;
   }
 }
 
@@ -206,7 +222,11 @@ void process_lcd_j_command(const char* command) {
     case 'Y': move_axis(ExtUI::axis_t::Y); break;
     case 'Z': move_axis(ExtUI::axis_t::Z); break;
     case 'X': move_axis(ExtUI::axis_t::X); break;
-    default: DEBUG_ECHOLNPAIR("UNKNOWN J COMMAND ", command);
+    default:
+#if MALYAN_DEBUG
+            DEBUG_ECHOLNPAIR("UNKNOWN J COMMAND ", command);
+#endif
+            break;
   }
 }
 
@@ -330,7 +350,11 @@ void process_lcd_s_command(const char* command) {
       #endif
     } break;
 
-    default: DEBUG_ECHOLNPAIR("UNKNOWN S COMMAND ", command);
+    default:
+#if MALYAN_DEBUG
+        DEBUG_ECHOLNPAIR("UNKNOWN S COMMAND ", command);
+#endif
+        break;
   }
 }
 
@@ -354,11 +378,17 @@ void process_lcd_command(const char* command) {
       case 'C': process_lcd_c_command(current); break;
       case 'B':
       case 'E': process_lcd_eb_command(current); break;
-      default: DEBUG_ECHOLNPAIR("UNKNOWN COMMAND ", command);
+      default:
+#if MALYAN_DEBUG
+          DEBUG_ECHOLNPAIR("UNKNOWN COMMAND ", command);
+#endif
+          break;
     }
   }
+#if MALYAN_DEBUG
   else
     DEBUG_ECHOLNPAIR("UNKNOWN COMMAND FORMAT ", command);
+#endif
 }
 
 // Parse LCD commands mixed with G-Code
