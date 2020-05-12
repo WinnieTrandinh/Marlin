@@ -56,15 +56,25 @@
 //
 #define SERVO0_PIN                         P2_00
 
-//
-// TMC StallGuard DIAG pins
-//
-#define X_DIAG_PIN                         P1_29  // X-STOP
-#define Y_DIAG_PIN                         P1_28  // Y-STOP
-#define Z_DIAG_PIN                         P1_27  // Z-STOP
-#define E0_DIAG_PIN                        P1_26  // E0DET
-#define E1_DIAG_PIN                        P1_25  // E1DET
+#ifdef SENSORLESS_HOMING
+  //
+  // TMC StallGuard DIAG pins
+  //
+  #define X_DIAG_PIN                         P1_29  // X-STOP
+  #define Y_DIAG_PIN                         P1_28  // Y-STOP
+  #define Z_DIAG_PIN                         P1_27  // Z-STOP
+  #define E0_DIAG_PIN                        P1_26  // E0DET
+  #define E1_DIAG_PIN                        P1_25  // E1DET
+#else
+  #define X_MIN_PIN P1_29
+  #define X_MAX_PIN P1_26
 
+  #define Y_MIN_PIN P1_28
+  #define Y_MAX_PIN P1_25
+
+  #define Z_MIN_PIN P1_27
+  #define Z_MAX_PIN P1_00
+#endif
 //
 // Limit Switches
 //
