@@ -148,7 +148,7 @@
 #define BOARD_PICA_REVB               1322  // PICA Shield (original version)
 #define BOARD_PICA                    1323  // PICA Shield (rev C or later)
 #define BOARD_INTAMSYS40              1324  // Intamsys 4.0 (Funmat HT)
-
+#define BOARD_WANHAO_D9_MK1           1325  // Wanhao D9 Mk1/Monoprice Maker Pro Mk1
 //
 // ATmega1281, ATmega2561
 //

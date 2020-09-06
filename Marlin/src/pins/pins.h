@@ -266,7 +266,7 @@
   #include "mega/pins_PICAOLD.h"                // ATmega2560                             env:mega2560
 #elif MB(INTAMSYS40)
   #include "mega/pins_INTAMSYS40.h"             // ATmega2560                             env:mega2560
-#elif MK(WANHAO_D9_MK1)
+#elif MB(WANHAO_D9_MK1)
   #include "mega/pins_WANHAOD9_MK1.h"
 //
 // ATmega1281, ATmega2561
