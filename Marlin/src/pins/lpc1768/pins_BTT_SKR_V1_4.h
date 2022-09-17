@@ -83,7 +83,7 @@
     #define X_MAX_PIN                      P1_26  // E0DET
   #endif
 #else
-  #define X_STOP_PIN                       P1_26 // X-STOP
+  #define X_STOP_PIN                       P1_29 // X-STOP
 #endif
 
 #ifdef Y_STALL_SENSITIVITY
@@ -101,7 +101,7 @@
     #define Y_MAX_PIN                      P1_25  // E1DET
   #endif
 #else
-  #define Y_STOP_PIN                       P1_25  // Y-STOP
+  #define Y_STOP_PIN                       P1_28  // Y-STOP
 #endif
 
 #ifdef Z_STALL_SENSITIVITY
