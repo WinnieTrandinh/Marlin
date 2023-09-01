@@ -518,7 +518,7 @@ G29_TYPE GcodeSuite::G29() {
       // For the initial G29 S2 save software endstop state
       SET_SOFT_ENDSTOP_LOOSE(true);
       // Move close to the bed before the first point
-      do_blocking_move_to_z(0);
+      do_blocking_move_to_z(10);
     }
     else {
 

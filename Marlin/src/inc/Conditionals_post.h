@@ -3114,6 +3114,9 @@
   #undef NOZZLE_TO_PROBE_OFFSET
   #undef PROBING_STEPPERS_OFF
 #endif
+#if ENABLED(PROBE_MANUALLY)
+  #define XY_PROBE_FEEDRATE ((homing_feedrate_mm_m.x + homing_feedrate_mm_m.y) / 2)
+#endif
 
 /**
  * XYZ Bed Skew Correction
